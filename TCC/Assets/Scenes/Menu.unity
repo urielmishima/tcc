@@ -482,6 +482,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1798846986}
+        m_MethodName: Quit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &464989021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1274,6 +1285,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1798846985}
+  - component: {fileID: 1798846986}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -1303,6 +1315,18 @@ RectTransform:
   m_AnchoredPosition: {x: -284.7, y: 2.3}
   m_SizeDelta: {x: 261.9, y: 234.7}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1798846986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798846984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd8ad18e7610a8646a542cd334b04da7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2063107781
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,6 +1415,17 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 8300000, guid: 33568a0f5db45364a9432885ec7d9645,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1798846986}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
