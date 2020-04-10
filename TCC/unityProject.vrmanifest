@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.tcc.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\Users\\PICHAU\\Desktop\\Trabalho\\USJT 2020 -1\\TCC\\TCC\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "action_manifest_path": "C:\\Users\\PICHAU\\Desktop\\Trabalho\\USJT 2020 -1\\tcc\\TCC\\Assets\\StreamingAssets\\SteamVR\\actions.json",
       "strings": {
         "en_us": {
           "name": "TCC [Testing]"
