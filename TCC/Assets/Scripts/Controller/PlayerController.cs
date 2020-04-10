@@ -18,20 +18,25 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+        
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, interactRange))
+        if (Physics.Raycast(ray, out hit, interactRange))
+        {
+            FlatInteractable interactable = hit.collider.GetComponent<FlatInteractable>();
+            if (interactable != null)
             {
-                FlatInteractable interactable = hit.collider.GetComponent<FlatInteractable>();
-                if (interactable != null)
+
+                SetFocus(interactable);
+                
+                if (Input.GetKeyDown(KeyCode.F))
                 {
-                    SetFocus(interactable);
+                    interactable.Interact();
                 }
-                Debug.Log("We hit " + hit.collider.name + " " + hit.point);
+
             }
+            Debug.Log("We hit " + hit.collider.name + " " + hit.point);
         }
         
     }
