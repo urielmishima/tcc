@@ -179,21 +179,6 @@ public class FirstPersonController : MonoBehaviour {
 
     #endregion
 
-    #region BETA Settings
-    /*
-     [System.Serializable]
-public class BETA_SETTINGS{
-
-}
-
-            [Space(15)]
-    [Tooltip("Settings in this feild are currently in beta testing and can prove to be unstable.")]
-    [Space(5)]
-    public BETA_SETTINGS betaSettings = new BETA_SETTINGS();
-     */
-    
-    #endregion
-
     #endregion
 
     private void Awake()
@@ -217,10 +202,6 @@ public class BETA_SETTINGS{
         #region Headbobbing Settings - Awake
 
         #endregion
-
-        #region BETA_SETTINGS - Awake
-    
-#endregion
 
     }
 
@@ -326,7 +307,6 @@ public class BETA_SETTINGS{
             if(playerCanMove){fps_Rigidbody.velocity = (Vector3.up * yVelocity);}
         }
             if(advanced._maxSlopeAngle>0 && IsGrounded && SlopeCheck()<=0.25f){yVelocity *= SlopeCheck();}
-        //if(){didJump = false;}
 
         if(_crouchModifiers.useCrouch){
             if(!_crouchModifiers.toggleCrouch){ isCrouching = _crouchModifiers.crouchOverride || Input.GetKey(_crouchModifiers.crouchKey);}
@@ -339,10 +319,6 @@ public class BETA_SETTINGS{
         #endregion
 
         #region Headbobbing Settings - Update
-
-        #endregion
-
-        #region BETA_SETTINGS - Update
 
         #endregion
     }
@@ -412,10 +388,6 @@ public class BETA_SETTINGS{
         } else { capsule.sharedMaterial = advanced.highFrictionMaterial; }
 
         fps_Rigidbody.AddForce(Physics.gravity * (advanced.gravityMultiplier - 1));
-        /* if(fOVKick.useFOVKick && wasWalking == isSprinting && fps_Rigidbody.velocity.magnitude > 0.1f && !isCrouching){
-            StopAllCoroutines();
-            StartCoroutine(wasWalking ? FOVKickOut() : FOVKickIn());
-        } */
 
         if(_crouchModifiers.useCrouch) {
             
@@ -431,10 +403,6 @@ public class BETA_SETTINGS{
                 jumpPowerInternal = jumpPower;
             }
         }
-
-        #endregion
-
-        #region BETA_SETTINGS - FixedUpdate
 
         #endregion
 
@@ -608,29 +576,6 @@ public class BETA_SETTINGS{
         #endregion
 
     }
-
-/*     public IEnumerator FOVKickOut()
-    {
-        float t = Mathf.Abs((playerCamera.fieldOfView - fOVKick.fovStart) / fOVKick.FOVKickAmount);
-        while(t < fOVKick.changeTime)
-        {
-            playerCamera.fieldOfView = fOVKick.fovStart + (fOVKick.KickCurve.Evaluate(t / fOVKick.changeTime) * fOVKick.FOVKickAmount);
-            t += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-    }
-
-    public IEnumerator FOVKickIn()
-    {
-        float t = Mathf.Abs((playerCamera.fieldOfView - fOVKick.fovStart) / fOVKick.FOVKickAmount);
-        while(t > 0)
-        {
-            playerCamera.fieldOfView = fOVKick.fovStart + (fOVKick.KickCurve.Evaluate(t / fOVKick.changeTime) * fOVKick.FOVKickAmount);
-            t -= Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-        playerCamera.fieldOfView = fOVKick.fovStart;
-    } */
 
     public IEnumerator CameraShake(float Duration, float Magnitude){
         float elapsed =0;
