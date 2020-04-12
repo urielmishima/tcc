@@ -296,7 +296,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.4
-  m_Height: 2
+  m_Height: 1.75
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114051214696948948
@@ -320,7 +320,7 @@ MonoBehaviour:
   lockAndHideCursor: 1
   playerCamera: {fileID: 20724644957976244}
   enableCameraShake: 1
-  autoCrosshair: 1
+  autoCrosshair: 0
   drawStaminaMeter: 0
   Crosshair: {fileID: 21300000, guid: 7fa7752f7f2a3fc4fbc2bcaea5671e2d, type: 3}
   targetAngles: {x: 0, y: 0, z: 0}
