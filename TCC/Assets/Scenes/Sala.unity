@@ -14135,6 +14135,7 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 771673644}
     m_Modifications:
+<<<<<<< HEAD
     - target: {fileID: 6285814780532377405, guid: e59d675bcf9ae38468747f1dd7d1347d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14219,6 +14220,8 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1503897373}
     m_Modifications:
+=======
+>>>>>>> hallway-lights
     - target: {fileID: -4216859302048453862, guid: f9bb4ebb9ec339541a13a50540d467e9,
         type: 3}
       propertyPath: m_LocalPosition.y
