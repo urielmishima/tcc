@@ -6001,6 +6001,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: cadeira3.0-color-rigidibody 1 (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 3814876089561891517, guid: 01f601a1939f05a49a3e5a5f1ef870e3,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01f601a1939f05a49a3e5a5f1ef870e3, type: 3}
 --- !u!1001 &529648619
@@ -16403,6 +16408,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: cadeira3.0-color-no-rigidibody (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 877474228002320674, guid: 42526a9dd95d2984991ff8e4673b4dac,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4212611614386783025, guid: 42526a9dd95d2984991ff8e4673b4dac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -24784,6 +24794,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: cadeira3.0-color-no-rigidibody (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 877474228002320674, guid: 42526a9dd95d2984991ff8e4673b4dac,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4212611614386783025, guid: 42526a9dd95d2984991ff8e4673b4dac,
         type: 3}

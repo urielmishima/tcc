@@ -14,7 +14,7 @@ GameObject:
   m_Layer: 0
   m_Name: cadeira3.0-color-no-rigidibody
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -25,13 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 877474228002320674}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 19.5, y: 13.134, z: -23.213}
-  m_LocalScale: {x: 0.018272549, y: 0.018272549, z: 0.112215325}
-  m_Children: []
+  m_LocalRotation: {x: -0, y: 0.70811814, z: -0, w: 0.7060941}
+  m_LocalPosition: {x: 19.604237, y: 13.007, z: -23.242146}
+  m_LocalScale: {x: 0.013553116, y: 0.013553116, z: 0.08323235}
+  m_Children:
+  - {fileID: 8440191011837189082}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90.164, z: 0}
 --- !u!33 &5128814162771360007
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -81,3 +82,93 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1001 &3484415911129624768
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4212611614386783025}
+    m_Modifications:
+    - target: {fileID: -4216859302048453862, guid: 1df21cb2ab81fb64f91157d04c298119,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.47199
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1df21cb2ab81fb64f91157d04c298119,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 18.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1df21cb2ab81fb64f91157d04c298119,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.8957753
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1df21cb2ab81fb64f91157d04c298119,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1df21cb2ab81fb64f91157d04c298119,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1df21cb2ab81fb64f91157d04c298119,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1df21cb2ab81fb64f91157d04c298119,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1df21cb2ab81fb64f91157d04c298119,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1df21cb2ab81fb64f91157d04c298119,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1df21cb2ab81fb64f91157d04c298119,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1df21cb2ab81fb64f91157d04c298119,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1df21cb2ab81fb64f91157d04c298119,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1df21cb2ab81fb64f91157d04c298119,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 1df21cb2ab81fb64f91157d04c298119,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 1df21cb2ab81fb64f91157d04c298119,
+        type: 3}
+      propertyPath: m_Name
+      value: cadeira3.0-color-2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1df21cb2ab81fb64f91157d04c298119, type: 3}
+--- !u!4 &8440191011837189082 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 1df21cb2ab81fb64f91157d04c298119,
+    type: 3}
+  m_PrefabInstance: {fileID: 3484415911129624768}
+  m_PrefabAsset: {fileID: 0}
