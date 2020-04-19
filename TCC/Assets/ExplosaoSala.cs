@@ -7,6 +7,8 @@ public class ExplosaoSala : MonoBehaviour
     public GameObject ponto;
     private Animator animator;
     public GameObject bloqueioPorta;
+    [SerializeField] private AudioClip pulseSound;
+    private AudioSource audioSource;
 
 
     //parametros de explosão
@@ -18,6 +20,7 @@ public class ExplosaoSala : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -40,7 +43,10 @@ public class ExplosaoSala : MonoBehaviour
             Rigidbody rb = hit.GetComponent<Rigidbody>();
 
             if (rb != null)
+            {
                 rb.AddExplosionForce(poder, posisaoPulso, raio, upforce, ForceMode.Impulse);
+                audioSource.PlayOneShot(pulseSound);
+            }
         }
     }
     void destruirBloqueio()
