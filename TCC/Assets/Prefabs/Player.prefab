@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e40576293a2dbdd4e9b82b1f187818d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastDistance: 3
+  raycastDistance: 4
 --- !u!1 &1743903104223250
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,10 +326,10 @@ MonoBehaviour:
   targetAngles: {x: 0, y: 0, z: 0}
   playerCanMove: 1
   walkByDefault: 1
-  walkSpeed: 4
+  walkSpeed: 2
   sprintKey: 304
-  sprintSpeed: 8
-  jumpPower: 5
+  sprintSpeed: 4
+  jumpPower: 2.5
   canJump: 1
   canHoldJump: 0
   useStamina: 1
@@ -390,7 +390,7 @@ MonoBehaviour:
   headbobHeight: 1
   headbobSideMovement: 0.5
   jumpLandIntensity: 3
-  Volume: 5
+  Volume: 1
   jumpSound: {fileID: 0}
   landSound: {fileID: 0}
   footStepSounds:
