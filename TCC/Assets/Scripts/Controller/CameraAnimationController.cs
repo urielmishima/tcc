@@ -6,11 +6,15 @@ public class CameraAnimationController : MonoBehaviour
 {
     public GameObject player;
     public GameObject CamIntro;
+    public GameObject espectro;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
+        animator = CamIntro.GetComponent<Animator>();
         introAnimation();
+        
     }
 
   
@@ -26,5 +30,23 @@ public class CameraAnimationController : MonoBehaviour
         CamIntro.SetActive(true);
         player.SetActive(false);
         StartCoroutine(finalizarAnimacao(8, CamIntro));
+    }
+
+    void espectroAnimation()
+    {
+        Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaa");
+        CamIntro.SetActive(true);
+        espectro.SetActive(true);
+        player.SetActive(false);
+        animator.SetTrigger("espectro_start");
+        StartCoroutine(finalizarAnimacao(12, CamIntro));
+    }
+
+    void update()
+    {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            espectroAnimation();
+        }
     }
 }
