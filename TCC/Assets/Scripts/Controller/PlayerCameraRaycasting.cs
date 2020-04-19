@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerCameraRaycasting : MonoBehaviour
 {
     [SerializeField] private float raycastDistance = 3f;
-    private ILootable currentTarget;
+    private IInteractable currentTarget;
 
     private void Update()
     {
@@ -26,7 +26,7 @@ public class PlayerCameraRaycasting : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.forward, out hit, raycastDistance))
         {
-            ILootable lootable = hit.collider.GetComponent<ILootable>();
+            IInteractable lootable = hit.collider.GetComponent<IInteractable>();
 
             if(lootable != null)
             {
