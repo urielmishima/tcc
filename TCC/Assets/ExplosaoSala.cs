@@ -23,15 +23,11 @@ public class ExplosaoSala : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Init()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            animator.SetTrigger("matar");
-            Invoke("pulso", tempoAnimacao);
-            Invoke("destruirBloqueio", tempoAnimacao);
-        }
+        animator.SetTrigger("matar");
+        Invoke("pulso", tempoAnimacao);
+        Invoke("destruirBloqueio", tempoAnimacao);
     }
 
     void pulso()

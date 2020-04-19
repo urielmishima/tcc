@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Item", menuName = "Item")]
 public class ItemScriptableObject : ScriptableObject
 {
-    public ItemPickup prefab;
+    public GameObject prefab;
 }

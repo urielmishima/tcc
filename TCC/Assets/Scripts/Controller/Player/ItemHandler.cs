@@ -25,14 +25,15 @@ public class ItemHandler : MonoBehaviour
 
     [SerializeField] private List<ItemScriptableObject> items = new List<ItemScriptableObject>();
     private int itemIndex = 0;
-    private ItemPickup currentItemPrefab;
+
+    public GameObject CurrentItem { get; private set; }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if(currentItemPrefab)
-                currentItemPrefab.GetComponent<IToggleable>().Toggle();
+            if(CurrentItem)
+                CurrentItem.GetComponent<IToggleable>().Toggle();
             
         }
 
@@ -51,17 +52,31 @@ public class ItemHandler : MonoBehaviour
         {
             itemIndex = 0;
         }
-        Destroy(currentItemPrefab);
-        currentItemPrefab = Instantiate(items[itemIndex].prefab, transform);
-        Destroy(currentItemPrefab.GetComponent<Rigidbody>());
+
+        Destroy(CurrentItem);
+        CurrentItem = Instantiate(items[itemIndex].prefab, transform);
+        Destroy(CurrentItem.GetComponent<Rigidbody>());
     }
 
     public void PickUp(ItemScriptableObject item)
     {
         items.Add(item);
-        if (currentItemPrefab == null)
+        if (CurrentItem == null)
         {
             nextItem();
         }
+    }
+
+    public ItemScriptableObject useItem ()
+    {
+        if (items.Count < 1)
+            return null;
+
+        ItemScriptableObject currentItem = items[itemIndex];
+        items.RemoveAt(itemIndex--);
+        Destroy(CurrentItem);
+        nextItem();
+
+        return currentItem;
     }
 }
