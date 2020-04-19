@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24a5c8972206ffa48bce5c96d0a5fd80, type: 3}
-  m_Name: Flashlight
+  m_Name: Doll
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3258553800446763548, guid: 9f0ab014af0a63b409d013b456a39341, type: 3}
+  prefab: {fileID: 2951918753179985901, guid: 62064ce6a7837b54993e1ae53cf96b6d, type: 3}
