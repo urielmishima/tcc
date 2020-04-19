@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-public class ItemPickup : MonoBehaviour, ILootable
+public class ItemPickup : MonoBehaviour, IInteractable
 {
 
-    [SerializeField] private Item item;
+    [SerializeField] private ItemScriptableObject item;
 
     public void OnStartLook()
     {
