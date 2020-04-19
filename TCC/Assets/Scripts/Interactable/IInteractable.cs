@@ -1,4 +1,4 @@
-﻿public interface ILootable
+﻿public interface IInteractable
 {
     void OnStartLook();
     void OnInteract();

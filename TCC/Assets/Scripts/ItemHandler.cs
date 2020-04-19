@@ -23,15 +23,16 @@ public class ItemHandler : MonoBehaviour
 
     #endregion
 
-    [SerializeField] private List<Item> items = new List<Item>();
+    [SerializeField] private List<ItemScriptableObject> items = new List<ItemScriptableObject>();
     private int itemIndex = 0;
-    private GameObject currentItemPrefab;
+    private ItemPickup currentItemPrefab;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            currentItemPrefab.GetComponent<IToggleable>().Toggle();
+            if(currentItemPrefab)
+                currentItemPrefab.GetComponent<IToggleable>().Toggle();
             
         }
 
@@ -43,15 +44,19 @@ public class ItemHandler : MonoBehaviour
 
     private void nextItem()
     {
+        if (items.Count < 1)
+            return;
+
         if (++itemIndex >= items.Count)
         {
             itemIndex = 0;
         }
         Destroy(currentItemPrefab);
-        currentItemPrefab = Instantiate(items[itemIndex].Prefab, transform);
+        currentItemPrefab = Instantiate(items[itemIndex].prefab, transform);
+        Destroy(currentItemPrefab.GetComponent<Rigidbody>());
     }
 
-    public void PickUp(Item item)
+    public void PickUp(ItemScriptableObject item)
     {
         items.Add(item);
         if (currentItemPrefab == null)

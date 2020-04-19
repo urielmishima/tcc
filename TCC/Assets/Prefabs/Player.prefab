@@ -394,9 +394,10 @@ MonoBehaviour:
   jumpSound: {fileID: 0}
   landSound: {fileID: 0}
   footStepSounds:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: a8812d556cdf38d49b2e09b788cb4995, type: 3}
+  - {fileID: 8300000, guid: 1926e0d425b6315468c675774d76a772, type: 3}
+  - {fileID: 8300000, guid: aaaeef1ace6789f4faa4c2df2d394b00, type: 3}
+  - {fileID: 8300000, guid: dc9beea5db1df714fa68663eea4ec7b0, type: 3}
   fsmode: 1
   dynamicFootstep:
     materialMode: 0
@@ -511,5 +512,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39bcdbf5b5ea1e241baddcd394d7973d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 11400000, guid: 52afa05152ff2a44b9ae4180ee55728c, type: 2}
+  items: []
