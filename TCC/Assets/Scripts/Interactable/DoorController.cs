@@ -1,11 +1,18 @@
-﻿using System;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemPickup : MonoBehaviour, IInteractable
+[RequireComponent(typeof(Animator))]
+public class DoorController : MonoBehaviour, IInteractable
 {
-
-    [SerializeField] private ItemScriptableObject item;
+    [SerializeField] private Animator animator;
     private bool showText = false;
+    private bool open = false;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     public void OnStartLook()
     {
@@ -14,8 +21,8 @@ public class ItemPickup : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        Destroy(gameObject);
-        ItemHandler.instance.PickUp(item);
+        animator.SetTrigger("abrir_porta");
+        open = !open;
     }
 
     public void OnEndLook()
@@ -37,9 +44,11 @@ public class ItemPickup : MonoBehaviour, IInteractable
             rect.height = Screen.height * h;
 
             var centeredStyle = GUI.skin.GetStyle("Label");
-            centeredStyle.alignment = TextAnchor.LowerCenter;            
+            centeredStyle.alignment = TextAnchor.LowerCenter;
 
-            GUI.Label(rect, "Press E to pick the item", centeredStyle);
+            var text = (open) ? "Press E to close" : "Press E to open";
+
+            GUI.Label(rect, text, centeredStyle);
         }
     }
 }
