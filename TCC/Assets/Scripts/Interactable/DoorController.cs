@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(AudioSource))]
 public class DoorController : MonoBehaviour, IInteractable
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private AudioClip openingSound;
+    [SerializeField] private AudioClip closingSound;
+    private AudioSource audioSource;
     private bool showText = false;
     private bool open = false;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void OnStartLook()
@@ -23,6 +28,7 @@ public class DoorController : MonoBehaviour, IInteractable
     {
         animator.SetTrigger("abrir_porta");
         open = !open;
+        audioSource.PlayOneShot(openingSound);
     }
 
     public void OnEndLook()
