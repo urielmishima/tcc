@@ -1,5 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Threading;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -19,6 +22,12 @@ public class DoorController : MonoBehaviour, IInteractable
         audioSource = GetComponent<AudioSource>();
     }
 
+    private IEnumerator Close()
+    {
+        yield return new WaitForSeconds(1.4f);
+        audioSource.PlayOneShot(closingSound);
+    }
+
     public void OnStartLook()
     {
         showText = true;
@@ -28,7 +37,18 @@ public class DoorController : MonoBehaviour, IInteractable
     {
         animator.SetTrigger("abrir_porta");
         open = !open;
-        audioSource.PlayOneShot(openingSound);
+
+        if(!audioSource.isPlaying)
+        {
+            if(open)
+            {
+                audioSource.PlayOneShot(openingSound);
+            }
+            else
+            {
+                StartCoroutine(Close());
+            }    
+        }
     }
 
     public void OnEndLook()
