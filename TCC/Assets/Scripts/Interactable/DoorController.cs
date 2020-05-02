@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Threading;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -34,7 +29,7 @@ public class DoorController : MonoBehaviour, IInteractable
 
     public void OnStartLook()
     {
-        print("Olhando");
+        Debug.Log("Olhando");
         showText = true;
     }
 
@@ -42,7 +37,7 @@ public class DoorController : MonoBehaviour, IInteractable
     {
         if (locked)
         {
-            print("entrou no if");
+            Debug.Log("entrou no if");
             audioSource.PlayOneShot(openingSound);
             StartCoroutine(InvokeNobody());
         }
