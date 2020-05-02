@@ -14,11 +14,14 @@ public class DoorController : MonoBehaviour, IInteractable
     private Animator animator;
     private AudioSource audioSource;
     private bool interactedBefore = false;
+    private bool firstOpenDoor = true;
+
     private bool showText = false;
 
     private bool open = false;
 
     public UnityEvent triedOpenDoor;
+    public UnityEvent firstOpenDoorEvent;
 
     private void Start()
     {
@@ -45,6 +48,13 @@ public class DoorController : MonoBehaviour, IInteractable
         {
             if (interactedBefore)
             {
+                if (firstOpenDoor)
+                {
+                    firstOpenDoor = false;
+                    firstOpenDoorEvent?.Invoke();
+                    OnEndLook();
+                }
+
                 animator.SetTrigger("abrir_porta");
                 open = !open;
                 if (!audioSource.isPlaying)
