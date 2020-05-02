@@ -16,7 +16,6 @@ public class BoardController : MonoBehaviour, IInteractable
     {        
         if (VerifyPlayerHasDoll())
         {
-            Debug.Log("Entrou no if");
             ItemScriptableObject doll = ItemHandler.instance.useItem();
             Instantiate(doll.prefab, transform.position + new Vector3(0, .1f), transform.rotation);
             animacao.Init();

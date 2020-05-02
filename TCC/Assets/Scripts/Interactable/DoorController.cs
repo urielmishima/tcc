@@ -1,25 +1,75 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Threading;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(AudioSource))]
 public class DoorController : MonoBehaviour, IInteractable
 {
-    [SerializeField] private Animator animator;
     [SerializeField] private AudioClip openingSound;
     [SerializeField] private AudioClip closingSound;
+    [SerializeField] private GameObject nobodyPrefab;
+    [SerializeField] private bool locked = false;
+
+    private Animator animator;
     private AudioSource audioSource;
+    private bool interactedBefore = false;
     private bool showText = false;
+
     private bool open = false;
+
+    public UnityEvent triedOpenDoor;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+    }
+
+
+    public void OnStartLook()
+    {
+        Debug.Log("Olhando");
+        showText = true;
+    }
+
+    public void OnInteract()
+    {
+        if (locked)
+        {
+            Debug.Log("entrou no if");
+            audioSource.PlayOneShot(openingSound);
+            StartCoroutine(InvokeNobody());
+        }
+        else
+        {
+            if (interactedBefore)
+            {
+                animator.SetTrigger("abrir_porta");
+                open = !open;
+                if (!audioSource.isPlaying)
+                {
+                    if (open)
+                    {
+                        audioSource.PlayOneShot(openingSound);
+                    }
+                    else
+                    {
+                        StartCoroutine(Close());
+                    }
+                }
+            }
+            else
+            {
+                triedOpenDoor?.Invoke();
+                interactedBefore = true;
+            }
+        }
+    }
+
+    public void OnEndLook()
+    {
+        showText = false;
     }
 
     private IEnumerator Close()
@@ -28,33 +78,13 @@ public class DoorController : MonoBehaviour, IInteractable
         audioSource.PlayOneShot(closingSound);
     }
 
-    public void OnStartLook()
+    private IEnumerator InvokeNobody()
     {
-        showText = true;
+        GameObject nobody = Instantiate(nobodyPrefab, transform.forward, transform.rotation);
+        yield return new WaitForSeconds(2f);
+        //Destroy(nobody);
     }
 
-    public void OnInteract()
-    {
-        animator.SetTrigger("abrir_porta");
-        open = !open;
-
-        if(!audioSource.isPlaying)
-        {
-            if(open)
-            {
-                audioSource.PlayOneShot(openingSound);
-            }
-            else
-            {
-                StartCoroutine(Close());
-            }    
-        }
-    }
-
-    public void OnEndLook()
-    {
-        showText = false;
-    }
 
     private void OnGUI()
     {
