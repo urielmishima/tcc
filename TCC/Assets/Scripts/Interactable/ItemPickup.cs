@@ -1,10 +1,13 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ItemPickup : IInteractable
 {
 
     [SerializeField] private ItemScriptableObject item;
+
+    public UnityEvent itemCaught;
 
     public override void OnStartLook()
     {
@@ -16,6 +19,7 @@ public class ItemPickup : IInteractable
     {
         Destroy(gameObject);
         ItemHandler.instance.PickUp(item);
+        itemCaught?.Invoke();
     }
 
     public override void OnEndLook()
