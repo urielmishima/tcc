@@ -1,45 +1,26 @@
 ﻿using System;
 using UnityEngine;
 
-public class ItemPickup : MonoBehaviour, IInteractable
+public class ItemPickup : IInteractable
 {
 
     [SerializeField] private ItemScriptableObject item;
-    private bool showText = false;
 
-    public void OnStartLook()
+    public override void OnStartLook()
     {
-        showText = true;
+        ShowText = true;
+        GUIText = "pickup the item";
     }
 
-    public void OnInteract()
+    public override void OnInteract()
     {
         Destroy(gameObject);
         ItemHandler.instance.PickUp(item);
     }
 
-    public void OnEndLook()
+    public override void OnEndLook()
     {
-        showText = false;
+        ShowText = false;
     }
 
-    private void OnGUI()
-    {
-        if (showText)
-        {
-            var w = .3f;
-            var h = .2f;
-
-            var rect = new Rect();
-            rect.x = (Screen.width * (1 - w)) / 2;
-            rect.y = (Screen.height * (1 - h)) / 2;
-            rect.width = Screen.width * w;
-            rect.height = Screen.height * h;
-
-            var centeredStyle = GUI.skin.GetStyle("Label");
-            centeredStyle.alignment = TextAnchor.LowerCenter;            
-
-            GUI.Label(rect, "Press E to pick the item", centeredStyle);
-        }
-    }
 }
