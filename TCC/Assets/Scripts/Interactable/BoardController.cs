@@ -17,7 +17,8 @@ public class BoardController : IInteractable
         if (VerifyPlayerHasDoll())
         {
             ItemScriptableObject doll = ItemHandler.instance.useItem();
-            Instantiate(doll.prefab, transform.position + new Vector3(0, .1f), transform.rotation);
+            GameObject dollGameObject = Instantiate(doll.prefab, transform.position + new Vector3(0, .1f), transform.rotation);
+            Destroy(dollGameObject.GetComponent<ItemPickup>());
             animacao.Init();
         }
     }
@@ -29,7 +30,11 @@ public class BoardController : IInteractable
 
     private bool VerifyPlayerHasDoll()
     {
-        string name = ItemHandler.instance.CurrentItem.transform.name;
-        return name == "Doll(Clone)";
+        if (ItemHandler.instance.CurrentItem)
+        {
+            string name = ItemHandler.instance.CurrentItem.transform.name;
+            return name == "Doll(Clone)";
+        }
+        return false;
     }
 }

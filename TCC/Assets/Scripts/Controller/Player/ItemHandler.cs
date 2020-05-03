@@ -46,14 +46,17 @@ public class ItemHandler : MonoBehaviour
     private void nextItem()
     {
         if (items.Count < 1)
+        {
+            CurrentItem = null;
             return;
+        }
 
         if (++itemIndex >= items.Count)
         {
             itemIndex = 0;
         }
 
-        Destroy(CurrentItem);
+        if(CurrentItem) Destroy(CurrentItem);
         CurrentItem = Instantiate(items[itemIndex].prefab, transform);
         Destroy(CurrentItem.GetComponent<Rigidbody>());
     }
