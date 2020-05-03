@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(AudioSource))]
-public class DoorController : MonoBehaviour, IInteractable
+public class DoorController : IInteractable
 {
     [SerializeField] private AudioClip openingSound;
     [SerializeField] private AudioClip closingSound;
@@ -15,8 +15,6 @@ public class DoorController : MonoBehaviour, IInteractable
     private AudioSource audioSource;
     private bool interactedBefore = false;
     private bool firstOpenDoor = true;
-
-    private bool showText = false;
 
     private bool open = false;
 
@@ -30,13 +28,14 @@ public class DoorController : MonoBehaviour, IInteractable
     }
 
 
-    public void OnStartLook()
+    public override void OnStartLook()
     {
         Debug.Log("Olhando");
-        showText = true;
+        ShowText = true;
+        GUIText = open ? "close" : "open";
     }
 
-    public void OnInteract()
+    public override void OnInteract()
     {
         if (locked)
         {
@@ -77,9 +76,9 @@ public class DoorController : MonoBehaviour, IInteractable
         }
     }
 
-    public void OnEndLook()
+    public override void OnEndLook()
     {
-        showText = false;
+        ShowText = false;
     }
 
     private IEnumerator Close()
@@ -93,28 +92,5 @@ public class DoorController : MonoBehaviour, IInteractable
         GameObject nobody = Instantiate(nobodyPrefab, transform.forward, transform.rotation);
         yield return new WaitForSeconds(2f);
         //Destroy(nobody);
-    }
-
-
-    private void OnGUI()
-    {
-        if (showText)
-        {
-            var w = .3f;
-            var h = .2f;
-
-            var rect = new Rect();
-            rect.x = (Screen.width * (1 - w)) / 2;
-            rect.y = (Screen.height * (1 - h)) / 2;
-            rect.width = Screen.width * w;
-            rect.height = Screen.height * h;
-
-            var centeredStyle = GUI.skin.GetStyle("Label");
-            centeredStyle.alignment = TextAnchor.LowerCenter;
-
-            var text = (open) ? "Press E to close" : "Press E to open";
-
-            GUI.Label(rect, text, centeredStyle);
-        }
     }
 }
