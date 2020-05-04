@@ -35,19 +35,19 @@ public class CameraAnimationController : MonoBehaviour
 
     public void espectroAnimation()
     {
-        Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaa");
+        //Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaa");
         CamIntro.SetActive(true);
         espectro.SetActive(true);
         player.SetActive(false);
         animator.SetTrigger("espectro_start");
-        StartCoroutine(finalizarAnimacao(12, CamIntro));
+        StartCoroutine(finalizarAnimacao(20, CamIntro));
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            //Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             espectroAnimation();
         }
     }
