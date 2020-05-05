@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 5943db40db2b2164b87f0500a1be3e64
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - ponto: {instanceID: 0}
+  - bloqueioPorta: {instanceID: 0}
+  - pulseSound: {fileID: 8300000, guid: dd50d3926fd3c89478fc002fa4a4b393, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

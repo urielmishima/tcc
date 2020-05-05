@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: a900be575e75d3a4ca0628becebcfb54
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - player: {instanceID: 0}
+  - CamIntro: {instanceID: 0}
+  - espectro: {instanceID: 0}
+  - animator: {instanceID: 0}
+  - impactSound: {fileID: 8300000, guid: a8bc576cc46352c41990d350cfb8d57b, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
