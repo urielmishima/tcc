@@ -40,7 +40,7 @@ public class CameraAnimationController : MonoBehaviour
         espectro.SetActive(true);
         player.SetActive(false);
         animator.SetTrigger("espectro_start");
-        StartCoroutine(finalizarAnimacao(20, CamIntro));
+        StartCoroutine(finalizarAnimacao(25, CamIntro));
     }
 
     void Update()
