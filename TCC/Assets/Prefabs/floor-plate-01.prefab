@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3795517537316645380}
   - component: {fileID: 7462722402901677821}
   m_Layer: 0
-  m_Name: floor-plate_01
+  m_Name: floor-plate-01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
