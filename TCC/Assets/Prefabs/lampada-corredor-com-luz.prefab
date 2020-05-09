@@ -351,5 +351,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f6345c95888664b9d9723de423008c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lampada: {fileID: 0}
+  lampada: {fileID: 9122595935834419372}
   reacender: 0

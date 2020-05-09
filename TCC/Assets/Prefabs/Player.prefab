@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4204582120663750}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: HeadJoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 81419976148993170}
   - component: {fileID: 124044488792268592}
   - component: {fileID: 8385823529116614279}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 54587624234064098}
   - component: {fileID: 136239539305442568}
   - component: {fileID: 114051214696948948}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -479,7 +479,7 @@ GameObject:
   m_Component:
   - component: {fileID: 231085375058801718}
   - component: {fileID: 6264859060210745852}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ItemHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
