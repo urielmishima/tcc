@@ -10,10 +10,12 @@ public class DoorController : IInteractable
     [SerializeField] private AudioClip closingSound;
     [SerializeField] private GameObject nobodyPrefab;
     [SerializeField] private bool locked = false;
+    [SerializeField] private GameObject nobodySpawnPosition;
 
     private Animator animator;
     private AudioSource audioSource;
     private bool interactedBefore = false;
+    private static bool interactedBeforeGlobal = false;
     private bool firstOpenDoor = true;
 
     private bool open = false;
@@ -30,6 +32,8 @@ public class DoorController : IInteractable
 
     public override void OnStartLook()
     {
+        if (locked && interactedBeforeGlobal) return;
+
         Debug.Log("Olhando");
         ShowText = true;
         GUIText = open ? "close" : "open";
@@ -37,13 +41,14 @@ public class DoorController : IInteractable
 
     public override void OnInteract()
     {
-        if (locked)
+        if (locked && !interactedBeforeGlobal)
         {
             Debug.Log("entrou no if");
             audioSource.PlayOneShot(openingSound);
-            StartCoroutine(InvokeNobody());
+            InvokeNobody();
+            DoorController.interactedBeforeGlobal = true;
         }
-        else
+        else if(!locked)
         {
             if (interactedBefore)
             {
@@ -87,10 +92,8 @@ public class DoorController : IInteractable
         audioSource.PlayOneShot(closingSound);
     }
 
-    private IEnumerator InvokeNobody()
+    private void InvokeNobody()
     {
-        GameObject nobody = Instantiate(nobodyPrefab, transform.forward, transform.rotation);
-        yield return new WaitForSeconds(2f);
-        //Destroy(nobody);
+        Instantiate(nobodyPrefab, nobodySpawnPosition.transform.position, nobodySpawnPosition.transform.rotation);
     }
 }
