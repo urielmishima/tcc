@@ -23,7 +23,7 @@ public class RadioController : IInteractable
     public override void OnInteract()
     {
         if (!audioSource.isPlaying) Ligar(); else Desligar();
-        StartCoroutine(resetGUIText());
+        //StartCoroutine(resetGUIText());
     }
 
     public override void OnEndLook()
@@ -31,12 +31,12 @@ public class RadioController : IInteractable
         ShowText = false;
     }
 
-    private IEnumerator resetGUIText()
-    {
-        OnEndLook();
-        yield return new WaitForSeconds(audioToggle.length + 0.1f);
-        OnStartLook();
-    }
+    //private IEnumerator resetGUIText()
+    //{
+    //    OnEndLook();
+    //    yield return new WaitForSeconds(audioToggle.length + 0.1f);
+    //    OnStartLook();
+    //}
 
     public void Ligar()
     {

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Flashlight
   m_EditorClassIdentifier: 
   prefab: {fileID: 3258553800446763548, guid: 9f0ab014af0a63b409d013b456a39341, type: 3}
+  audioPick: {fileID: 8300000, guid: 17b5ce20ae09fe1469d0cbec8e2f6e40, type: 3}

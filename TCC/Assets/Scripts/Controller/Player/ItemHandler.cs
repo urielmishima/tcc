@@ -24,9 +24,15 @@ public class ItemHandler : MonoBehaviour
     #endregion
 
     [SerializeField] private List<ItemScriptableObject> items = new List<ItemScriptableObject>();
+    private AudioSource audioSource;
     private int itemIndex = 0;
 
     public GameObject CurrentItem { get; private set; }
+
+    private void Start()
+    {
+        audioSource = GetComponentInParent<AudioSource>();
+    }
 
     private void Update()
     {
@@ -56,14 +62,19 @@ public class ItemHandler : MonoBehaviour
             itemIndex = 0;
         }
 
-        if(CurrentItem) Destroy(CurrentItem);
+        if (CurrentItem){
+            Destroy(CurrentItem);
+            audioSource.PlayOneShot(items[itemIndex].audioPick);
+        }
         CurrentItem = Instantiate(items[itemIndex].prefab, transform);
         Destroy(CurrentItem.GetComponent<Rigidbody>());
+        
     }
 
     public void PickUp(ItemScriptableObject item)
     {
         items.Add(item);
+        audioSource.PlayOneShot(item.audioPick);
         if (CurrentItem == null)
         {
             nextItem();

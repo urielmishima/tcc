@@ -30,11 +30,7 @@ public class PlayerCameraRaycasting : MonoBehaviour
 
             if(lootable != null)
             {
-                if(lootable == currentTarget)
-                {
-                    return;
-                }
-                else if (currentTarget != null)
+                if (currentTarget != null)
                 {
                     currentTarget.OnEndLook();
                     currentTarget = lootable;
