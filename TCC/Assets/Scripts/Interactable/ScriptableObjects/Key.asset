@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Key
   m_EditorClassIdentifier: 
   prefab: {fileID: 859769480543375941, guid: 5ef4fe4ab3913234ba7a8eb014e4d009, type: 3}
+  audioPick: {fileID: 8300000, guid: 0e90999735fa3a1479181ce2d32e9b81, type: 3}

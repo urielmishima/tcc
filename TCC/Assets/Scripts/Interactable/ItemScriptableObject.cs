@@ -6,4 +6,5 @@ using UnityEngine;
 public class ItemScriptableObject : ScriptableObject
 {
     public GameObject prefab;
+    public AudioClip audioPick;
 }
