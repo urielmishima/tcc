@@ -8,20 +8,14 @@ public class DoorController : IInteractable
 {
     [SerializeField] private AudioClip openingSound;
     [SerializeField] private AudioClip closingSound;
-    [SerializeField] private GameObject nobodyPrefab;
     [SerializeField] private bool locked = false;
-    [SerializeField] private GameObject nobodySpawnPosition;
 
     private Animator animator;
     private AudioSource audioSource;
-    private bool interactedBefore = false;
-    private static bool interactedBeforeGlobal = false;
-    private bool firstOpenDoor = true;
 
-    private bool open = false;
+    private bool isOpen = false;
 
     public UnityEvent triedOpenDoor;
-    public UnityEvent firstOpenDoorEvent;
 
     private void Start()
     {
@@ -32,53 +26,30 @@ public class DoorController : IInteractable
 
     public override void OnStartLook()
     {
-        if (locked && interactedBeforeGlobal) return;
-
         Debug.Log("Olhando");
         ShowText = true;
-        GUIText = open ? "close" : "open";
+        GUIText = isOpen ? "close" : "open";
     }
 
     public override void OnInteract()
     {
-        if (locked && !interactedBeforeGlobal)
+        if (!audioSource.isPlaying)
         {
-            Debug.Log("entrou no if");
-            audioSource.PlayOneShot(openingSound);
-            InvokeNobody();
-            DoorController.interactedBeforeGlobal = true;
-        }
-        else if(!locked)
-        {
-            if (interactedBefore)
+            if (!isOpen)
             {
-                if (firstOpenDoor)
-                {
-                    firstOpenDoor = false;
-                    firstOpenDoorEvent?.Invoke();
-                    OnEndLook();
-                }
-
-                animator.SetTrigger("abrir_porta");
-                open = !open;
-                if (!audioSource.isPlaying)
-                {
-                    if (open)
-                    {
-                        audioSource.PlayOneShot(openingSound);
-                    }
-                    else
-                    {
-                        StartCoroutine(Close());
-                    }
-                }
+                audioSource.PlayOneShot(openingSound);
             }
             else
             {
-                triedOpenDoor?.Invoke();
-                interactedBefore = true;
+                StartCoroutine(Close());
             }
         }
+        if (!locked)
+        {
+            isOpen = !isOpen;
+            animator.SetBool("isOpen", isOpen);
+        }
+        triedOpenDoor?.Invoke();
     }
 
     public override void OnEndLook()
@@ -86,14 +57,17 @@ public class DoorController : IInteractable
         ShowText = false;
     }
 
-    private IEnumerator Close()
+    public void UnLock()
     {
-        yield return new WaitForSeconds(1.4f);
-        audioSource.PlayOneShot(closingSound);
+        locked = false;
     }
 
-    private void InvokeNobody()
+    private IEnumerator Close()
     {
-        Instantiate(nobodyPrefab, nobodySpawnPosition.transform.position, nobodySpawnPosition.transform.rotation);
+        AnimatorClipInfo[] animatorClips = animator.GetCurrentAnimatorClipInfo(0);
+        float animationTime = animatorClips[0].clip.length;
+
+        yield return new WaitForSeconds(animationTime);
+        audioSource.PlayOneShot(closingSound);
     }
 }
