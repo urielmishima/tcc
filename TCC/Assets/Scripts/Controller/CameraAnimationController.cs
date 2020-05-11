@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CameraAnimationController : MonoBehaviour
 {
@@ -12,14 +13,16 @@ public class CameraAnimationController : MonoBehaviour
     public GameObject pontoFinalizacaoEspectro;
     public GameObject portaBanheiro;
     public Animator portaAnimator;
-    // Start is called before the first frame update
+
+    private int doorOpenAttempts;
+    public UnityEvent firstOpenTry;
+
     void Start()
     {
         animator = CamIntro.GetComponent<Animator>();
         portaAnimator = portaBanheiro.GetComponent<Animator>();
         introAnimation();
     }
-
   
     IEnumerator finalizarAnimacao(int secs, GameObject camera)
     {
@@ -32,8 +35,6 @@ public class CameraAnimationController : MonoBehaviour
         yield return new WaitForSeconds(secs);
         player.SetActive(true);
         player.transform.position = camera.transform.position;
-        //player.transform.rotation = pontoFinalizacao.transform.rotation;
-       // player.transform.Rotate(0.0f, 0.0f, 180.0f, Space.World);
         camera.SetActive(false);
     }
     void introAnimation()
@@ -45,21 +46,18 @@ public class CameraAnimationController : MonoBehaviour
 
     public void espectroAnimation()
     {
-        //Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaa");
-        CamIntro.SetActive(true);
-        espectro.SetActive(true);
-        player.SetActive(false);
-        animator.SetTrigger("espectro_start");
-        StartCoroutine(finalizarAnimacaoEspectro(25, CamIntro, pontoFinalizacaoEspectro));
-        portaAnimator.SetTrigger("PortaBanheiroTrigger");
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.B))
+        if (doorOpenAttempts == 1)
         {
-            //Debug.Log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-            espectroAnimation();
+            CamIntro.SetActive(true);
+            espectro.SetActive(true);
+            player.SetActive(false);
+            animator.SetTrigger("espectro_start");
+            StartCoroutine(finalizarAnimacaoEspectro(25, CamIntro, pontoFinalizacaoEspectro));
+            portaAnimator.SetTrigger("PortaBanheiroTrigger");
+        } else if (doorOpenAttempts == 0)
+        {
+            firstOpenTry?.Invoke();
         }
+        doorOpenAttempts++;
     }
 }

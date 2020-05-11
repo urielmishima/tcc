@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoardController : IInteractable
 {
     [SerializeField] private ExplosaoSala animacao;
+    private GameObject objectOnTheBoard;
 
     public override void OnStartLook()
     {
@@ -17,8 +18,8 @@ public class BoardController : IInteractable
         if (VerifyPlayerHasDoll())
         {
             ItemScriptableObject doll = ItemHandler.instance.useItem();
-            GameObject dollGameObject = Instantiate(doll.prefab, transform.position + new Vector3(0, .1f), transform.rotation * Quaternion.Euler(180, 0, 0));
-            Destroy(dollGameObject.GetComponent<ItemPickup>());
+            objectOnTheBoard = Instantiate(doll.prefab, transform.position + new Vector3(0, .1f), transform.rotation * Quaternion.Euler(180, 0, 0));
+            Destroy(objectOnTheBoard.GetComponent<ItemPickup>());
             animacao.Init();
         }
     }
@@ -36,5 +37,14 @@ public class BoardController : IInteractable
             return name == "Doll(Clone)";
         }
         return false;
+    }
+
+    public void DestroyObjectOnTheBoard()
+    {
+        if(objectOnTheBoard)
+        {
+            Destroy(objectOnTheBoard);
+            objectOnTheBoard = null;
+        }
     }
 }

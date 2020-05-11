@@ -7,6 +7,7 @@ public class LampManager : MonoBehaviour
     private Light[] lights;
     [SerializeField] private AudioClip desligar;
     private AudioSource audioSource;
+    private bool lightsOn = true;
 
     void Start()
     {
@@ -14,12 +15,16 @@ public class LampManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void ToggleAllLights()
+    public void TurnOffAllLights()
     {
-        audioSource.PlayOneShot(desligar);
-        foreach (Light light in lights)
+        if (lightsOn)
         {
-            light.enabled = !light.enabled;
+            audioSource.PlayOneShot(desligar);
+            foreach (Light light in lights)
+            {
+                light.enabled = !light.enabled;
+            }
+            lightsOn = false;
         }
     }
 }
