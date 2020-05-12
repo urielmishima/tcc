@@ -43,7 +43,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 1435554579238916708}
   - component: {fileID: 4670395695452352157}
   m_Layer: 0
-  m_Name: streetlights-com-luz 1
+  m_Name: streetlights-com-luz
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
