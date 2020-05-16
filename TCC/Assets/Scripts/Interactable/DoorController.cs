@@ -4,6 +4,7 @@ using UnityEngine.Events;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(Collider))]
 public class DoorController : IInteractable
 {
     [SerializeField] private AudioClip openingSound;
