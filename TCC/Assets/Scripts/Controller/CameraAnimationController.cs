@@ -11,7 +11,6 @@ public class CameraAnimationController : MonoBehaviour
     public GameObject trigger;
     public Animator animator;
     public GameObject pontoFinalizacaoEspectro;
-    public GameObject portaBanheiro;
     public Animator portaAnimator;
 
     private int doorOpenAttempts;
@@ -20,7 +19,6 @@ public class CameraAnimationController : MonoBehaviour
     void Start()
     {
         animator = CamIntro.GetComponent<Animator>();
-        portaAnimator = portaBanheiro.GetComponent<Animator>();
         introAnimation();
     }
   
@@ -53,7 +51,6 @@ public class CameraAnimationController : MonoBehaviour
             player.SetActive(false);
             animator.SetTrigger("espectro_start");
             StartCoroutine(finalizarAnimacaoEspectro(25, CamIntro, pontoFinalizacaoEspectro));
-            portaAnimator.SetTrigger("PortaBanheiroTrigger");
         } else if (doorOpenAttempts == 0)
         {
             firstOpenTry?.Invoke();

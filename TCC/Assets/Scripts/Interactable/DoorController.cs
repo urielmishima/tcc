@@ -9,12 +9,13 @@ public class DoorController : IInteractable
 {
     [SerializeField] private AudioClip openingSound;
     [SerializeField] private AudioClip closingSound;
-    [SerializeField] private bool locked = false;
+    [SerializeField] private bool locked;
+    [SerializeField] private int openDirection;
 
     private Animator animator;
     private AudioSource audioSource;
 
-    private bool isOpen = false;
+    private bool isOpen;
 
     public UnityEvent triedOpenDoor;
 
@@ -22,12 +23,12 @@ public class DoorController : IInteractable
     {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        animator.SetInteger("OpenDirection", openDirection);
     }
 
 
     public override void OnStartLook()
     {
-        Debug.Log("Olhando");
         ShowText = true;
         GUIText = isOpen ? "close" : "open";
     }
