@@ -17,24 +17,36 @@ public class NobodySlideAnimation : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        audioSouce.Play();
-        if(audioSouce.time < 7)
+        if (!hasTriggered && other.gameObject.CompareTag("Player"))
         {
-            audioSouce.time = 7f;
+            audioSouce.Play();
+            if (audioSouce.time < 7)
+            {
+                audioSouce.time = 7f;
+            }
         }
+
     }
 
     private void OnTriggerStay(Collider other)
-    {        
-        timePassed += Time.deltaTime;
-        if (!hasTriggered && other.gameObject.CompareTag("Player") && timePassed >= 4)
+    {
+        if (other.gameObject.CompareTag("Player"))
         {
-            animator.SetTrigger("slide-animation-trigger");
+            timePassed += Time.deltaTime;
+            if (!hasTriggered && timePassed >= 4)
+            {
+                animator.SetTrigger("slide-animation-trigger");
+                hasTriggered = true;
+                Destroy(audioSouce, 1.8f);
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        audioSouce.Pause();
+        if (!hasTriggered && other.gameObject.CompareTag("Player"))
+        {
+            audioSouce.Pause();
+        }
     }
 }

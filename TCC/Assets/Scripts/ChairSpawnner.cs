@@ -6,20 +6,17 @@ using UnityEngine.Events;
 public class ChairSpawnner : MonoBehaviour
 {
     [SerializeField] private GameObject chairPrefab;
-    
+
     private bool hasTriggered;
 
     public UnityEvent chairInvoked;
+
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Colidiu");
-        if (!hasTriggered)
+        if (!hasTriggered && other.gameObject.CompareTag("Player"))
         {
-            if (other.gameObject.CompareTag("Player"))
-            {
-                chairInvoked?.Invoke();
-                StartCoroutine(invokeChair());                
-            }
+            chairInvoked?.Invoke();
+            StartCoroutine(invokeChair());
         }
     }
 
@@ -32,5 +29,6 @@ public class ChairSpawnner : MonoBehaviour
         chairRigidbody.AddTorque(transform.up * 50, ForceMode.Impulse);
         chairRigidbody.AddTorque(transform.right * 50, ForceMode.Impulse);
         hasTriggered = true;
+        Destroy(gameObject);
     }
 }

@@ -23,7 +23,7 @@ public class CarEvent : MonoBehaviour
     private IEnumerator CarAlarmEvent()
     {
         StartAlarm?.Invoke();
-        yield return new WaitForSeconds(60f);
+        yield return new WaitForSeconds(30f);
         StopAlarm?.Invoke();
         Destroy(gameObject, 1f);
     }
