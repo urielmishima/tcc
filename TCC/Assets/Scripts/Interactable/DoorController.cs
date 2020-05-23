@@ -9,13 +9,15 @@ public class DoorController : IInteractable
 {
     [SerializeField] private AudioClip openingSound;
     [SerializeField] private AudioClip closingSound;
+    [SerializeField] private AudioClip unlockSound;
     [SerializeField] private bool locked;
+    [SerializeField] private bool requireKey;
     [SerializeField] private int openDirection;
 
     private Animator animator;
     private AudioSource audioSource;
 
-    private bool isOpen;
+    private bool isOpen = false;
 
     public UnityEvent triedOpenDoor;
 
@@ -29,27 +31,48 @@ public class DoorController : IInteractable
 
     public override void OnStartLook()
     {
-        ShowText = true;
-        GUIText = isOpen ? "close" : "open";
+
+        if (locked && requireKey)
+        {
+            ShowText = VerifyPlayerHasKey();
+            GUIText = "unlock";
+        }
+        else
+        {
+            ShowText = true;
+            GUIText = isOpen ? "close" : "open";
+        }
     }
 
     public override void OnInteract()
     {
         if (!audioSource.isPlaying)
         {
-            if (!isOpen)
+
+            if (requireKey && locked)
             {
-                audioSource.PlayOneShot(openingSound);
-            }
-            else
+                audioSource.PlayOneShot(unlockSound);
+            } else
             {
-                StartCoroutine(Close());
+                if (!isOpen)
+                {
+                    audioSource.PlayOneShot(openingSound);
+                }
+                else
+                {
+                    StartCoroutine(Close());
+                }
             }
         }
         if (!locked)
         {
             isOpen = !isOpen;
             animator.SetBool("isOpen", isOpen);
+        }
+        else if (requireKey && VerifyPlayerHasKey())
+        {
+            ItemHandler.instance.useItem();
+            UnLock();
         }
         triedOpenDoor?.Invoke();
     }
@@ -71,5 +94,15 @@ public class DoorController : IInteractable
 
         yield return new WaitForSeconds(animationTime);
         audioSource.PlayOneShot(closingSound);
+    }
+
+    private bool VerifyPlayerHasKey()
+    {
+        if (ItemHandler.instance.CurrentItem)
+        {
+            string name = ItemHandler.instance.CurrentItem.transform.name;
+            return name == "Key(Clone)";
+        }
+        return false;
     }
 }
