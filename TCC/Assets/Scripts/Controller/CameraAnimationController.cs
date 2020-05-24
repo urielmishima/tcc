@@ -34,6 +34,12 @@ public class CameraAnimationController : MonoBehaviour
         player.SetActive(true);
         player.transform.position = camera.transform.position;
         camera.SetActive(false);
+        StartCoroutine(desabilitarEspectro(30));
+    }
+    IEnumerator desabilitarEspectro(int secs)
+    {
+        yield return new WaitForSeconds(secs);
+        espectro.SetActive(false);
     }
     void introAnimation()
     {
@@ -41,7 +47,6 @@ public class CameraAnimationController : MonoBehaviour
         player.SetActive(false);
         StartCoroutine(finalizarAnimacao(8, CamIntro));
     }
-
     public void espectroAnimation()
     {
         if (doorOpenAttempts == 1)

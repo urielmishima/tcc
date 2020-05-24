@@ -28,6 +28,7 @@ public class ChainController : IInteractable
             ItemHandler.instance.useItem();
             audioSource.PlayOneShot(breakSound);
             chainBreaked?.Invoke();
+            Destroy(gameObject, 1f);
         }
     }
 
