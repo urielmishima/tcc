@@ -29,6 +29,6 @@ public class ChairSpawnner : MonoBehaviour
         chairRigidbody.AddTorque(transform.up * 50, ForceMode.Impulse);
         chairRigidbody.AddTorque(transform.right * 50, ForceMode.Impulse);
         hasTriggered = true;
-        Destroy(gameObject);
+        Destroy(gameObject, 5f);
     }
 }
