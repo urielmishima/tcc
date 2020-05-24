@@ -301,7 +301,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -310,7 +310,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 0.1
-  MaxDistance: 5
+  MaxDistance: 3.8602982
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -397,10 +397,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d1c6b36a2d5f2d4e928f3d1554a00c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openingSound: {fileID: 8300000, guid: 4108b61841cf3e247b8a460900af384a, type: 3}
-  closingSound: {fileID: 8300000, guid: 887c27120d7966749b4de3b42f3384ee, type: 3}
+  openingSound: {fileID: 8300000, guid: 50958ee4252653f4397fc8efc0b384a1, type: 3}
+  closingSound: {fileID: 8300000, guid: 9bf0abefe4ef4b94a8ca53813aa4d76f, type: 3}
+  unlockSound: {fileID: 0}
   locked: 0
-  openForward: 1
+  requireKey: 0
+  openDirection: 0
   triedOpenDoor:
     m_PersistentCalls:
       m_Calls: []
