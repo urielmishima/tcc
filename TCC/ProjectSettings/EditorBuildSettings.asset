@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Sala.unity
     guid: f230e77e5de13964c9fe6db6050fd36d
+  - enabled: 1
+    path: Assets/Scenes/Capela.unity
+    guid: 5e283b30a80862647b3dbadd5e82511a
   m_configObjects: {}
