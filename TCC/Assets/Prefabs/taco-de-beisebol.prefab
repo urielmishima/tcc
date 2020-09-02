@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2668119347827163704}
   - component: {fileID: 5627858460529438703}
   - component: {fileID: 5627858460529438702}
+  - component: {fileID: 5747732259407228554}
   m_Layer: 0
   m_Name: taco-de-beisebol
   m_TagString: Untagged
@@ -27,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4412338399919732452}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.199999, y: 12.54, z: -20.14}
+  m_LocalRotation: {x: -0.258819, y: 0, z: 0, w: 0.9659259}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0.5}
   m_LocalScale: {x: 250, y: 250, z: 250}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -30, y: 0, z: 0}
 --- !u!33 &8519571355402649281
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -112,3 +113,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.00091604923, y: 0.0009212565, z: 0.008677718}
   m_Center: {x: 0.00003272794, y: 0.000029706469, z: -0.0016883477}
+--- !u!114 &5747732259407228554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4412338399919732452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f581626b9677694d963268c57748d1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 6b04a11476a9b1a499b8de825f52f696, type: 2}
+  itemCaught:
+    m_PersistentCalls:
+      m_Calls: []
