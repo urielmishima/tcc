@@ -13,7 +13,7 @@ public class StickEvent : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && !hasTriggered)
         {
-            GameObject stick = Instantiate(stickPrefab);
+            GameObject stick = Instantiate(stickPrefab, transform.position, transform.rotation);
             Rigidbody rigidbody = stick.GetComponent<Rigidbody>();
             rigidbody.AddForce(transform.right * 10, ForceMode.Impulse);
             rigidbody.AddTorque(transform.up * 50, ForceMode.Impulse);
