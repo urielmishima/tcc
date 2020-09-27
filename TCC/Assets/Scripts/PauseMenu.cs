@@ -9,6 +9,8 @@ public class PauseMenu : MonoBehaviour
 
     private static bool GameIsPaused;
     [SerializeField] private GameObject pauseMenuUI;
+    [SerializeField] private CheckPoint checkPoint;
+
 
     public UnityEvent onResumeByButton;
 
@@ -19,7 +21,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && checkPoint.GetPlayerIsAlive())
         {
             if (GameIsPaused) Resume(false);
             else Pause();
