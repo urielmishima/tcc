@@ -1,23 +1,46 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CheckPoint : MonoBehaviour
 {
     [SerializeField] private GameObject checkpoint;
+    [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private Transform player;
+    private bool playerIsAlive = true;
+
+    public UnityEvent playerDie;
+    public UnityEvent playerRespawn;
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
-            teleportToCheckPoint();
+            playerDie?.Invoke();
         }
     }
 
-    private void teleportToCheckPoint()
+    public void die()
     {
-        this.transform.position = this.checkpoint.transform.position;
-        this.transform.rotation = this.checkpoint.transform.rotation;
+        playerIsAlive = false;
+        Time.timeScale = 0f;
+        gameOverUI.SetActive(true);
+    }
+
+    public void respawn()
+    {
+        playerIsAlive = true;
+        Time.timeScale = 1f;
+        player.position = checkpoint.transform.position;
+        player.rotation = checkpoint.transform.rotation;
+        gameOverUI.SetActive(false);
+        playerRespawn?.Invoke();
+    }
+
+    public bool GetPlayerIsAlive()
+    {
+        return playerIsAlive;
     }
 }
