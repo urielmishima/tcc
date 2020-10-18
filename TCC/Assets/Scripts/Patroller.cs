@@ -68,7 +68,7 @@ public class Patroller : MonoBehaviour
         {
             agent.SetDestination(target.transform.position);
             patrolling = false;
-            anim.SetBool("Attack", agent.remainingDistance < agent.stoppingDistance);
+            anim.SetBool("Attack", agent.remainingDistance <= agent.stoppingDistance);
         }
         else
         {
