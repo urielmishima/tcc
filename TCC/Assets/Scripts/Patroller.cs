@@ -16,6 +16,7 @@ public class Patroller : MonoBehaviour
     private bool arrived;
     [SerializeField] private float seeDistance;
     [SerializeField] private float fieldOfViewAngle;
+    [SerializeField] private GameObject gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -95,5 +96,11 @@ public class Patroller : MonoBehaviour
         arrived = false;
         agent.destination = patrolTargets[destPoint].position;
         destPoint = (destPoint + 1) % patrolTargets.Length;
+    }
+
+    void KillPlayer()
+    {
+        print("oi");
+        gameManager.GetComponent<CheckPoint>().die();
     }
 }
