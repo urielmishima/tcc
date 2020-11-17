@@ -27,6 +27,7 @@ public class CheckPoint : MonoBehaviour
         playerIsAlive = false;
         Time.timeScale = 0f;
         gameOverUI.SetActive(true);
+        playerDie?.Invoke();
     }
 
     public void respawn()
