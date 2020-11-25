@@ -12,11 +12,26 @@ public class BackSceneController : IInteractable
 
     public override void OnStartLook()
     {
-        ShowText = true;
+        if (VerifyPlayerHasArtifact()) ShowText = true;
     }
     public override void OnInteract()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        if (VerifyPlayerHasArtifact())
+        {
+            SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName("Capela"));
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("Sala"));
+        }
+        
+    }
+
+    private bool VerifyPlayerHasArtifact()
+    {
+        if (ItemHandler.instance.CurrentItem)
+        {
+            string name = ItemHandler.instance.CurrentItem.transform.name;
+            return name == "ArtefatoAmarelo(Clone)";
+        }
+        return false;
     }
 
     public override void OnEndLook()
