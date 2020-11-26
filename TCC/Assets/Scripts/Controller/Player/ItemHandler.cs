@@ -23,7 +23,7 @@ public class ItemHandler : MonoBehaviour
 
     #endregion
 
-    [SerializeField] private List<ItemScriptableObject> items = new List<ItemScriptableObject>();
+    public List<ItemScriptableObject> items = new List<ItemScriptableObject>();
     private AudioSource audioSource;
     private int itemIndex = 0;
 

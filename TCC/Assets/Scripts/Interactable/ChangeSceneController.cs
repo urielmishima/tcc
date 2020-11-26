@@ -11,8 +11,6 @@ public class ChangeSceneController : IInteractable
     [SerializeField] private GameObject player;
     private bool playerEnter;
     private AudioSource audioLocked;
-    private bool playerBack;
-    private ItemScriptableObject yellowArtifact;
 
     void Start()
     {
@@ -25,11 +23,6 @@ public class ChangeSceneController : IInteractable
     {
         var activeScene = ("Sala" == SceneManager.GetActiveScene().name);
         if (!activeScene) OnEndLook();
-//        else if (!playerBack)
-//        {
-//            playerBack = true;
-//            ItemHandler.instance.PickUp(yellowArtifact);
-//        }
         player.SetActive(activeScene);
     }
 

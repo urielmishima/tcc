@@ -17,13 +17,19 @@ public class Patroller : MonoBehaviour
     [SerializeField] private float seeDistance;
     [SerializeField] private float fieldOfViewAngle;
     [SerializeField] private GameObject gameManager;
+    [SerializeField] private AudioClip seeSound;
+    private AudioSource audioSource;
+    private bool lastSeeState;
+
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         lastKnownPosition = transform.position;
+        lastSeeState = false;
     }
 
     private bool CanSeeTarget()
@@ -41,6 +47,8 @@ public class Patroller : MonoBehaviour
                 lastKnownPosition = target.transform.position;
             }
         }
+        if (lastSeeState != canSee && canSee) audioSource.PlayOneShot(seeSound);
+        lastSeeState = canSee;
         return canSee;
     }
 

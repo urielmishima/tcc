@@ -26,10 +26,10 @@ public class BackSceneController : IInteractable
 
     private bool VerifyPlayerHasArtifact()
     {
-        if (ItemHandler.instance.CurrentItem)
+        foreach (var item in ItemHandler.instance.items)
         {
-            string name = ItemHandler.instance.CurrentItem.transform.name;
-            return name == "ArtefatoAmarelo(Clone)";
+            print(item.name);
+            if (item.name.Contains("ArtefatoAmarelo")) return true;
         }
         return false;
     }
