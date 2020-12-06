@@ -1,4 +1,4 @@
-# Black Nexus - TCC
+# Donut Company - TCC
 
 ## Resumo do tema:
 A ideia do projeto é desenvolver um jogo de terror ambientado em um lugar fechado. O jogo irá explorar o terror psicológico fazendo com que o jogador se sinta desconfortável e ansioso a todo momento. E enquanto é perseguido, o jogador deve descobrir o mistério por trás do aparecimento da entidade e escapar com vida.
